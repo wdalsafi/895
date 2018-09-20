@@ -1,0 +1,69 @@
+def cre_a_lis(x):
+
+    for i in range(0, x): # set up loop to run x times
+        number = int(input('Next element: ')) # prompt user for number
+        the_list.append(number) # append to the_list
+    options()
+
+def options():
+    print ('''
+           0. Exit
+           1. Provide a new working list
+           2. Output the working list
+           3. Find the element in the list that is closest to a value you provide
+           4. Sort the list
+           5. Add an integer you provide to each element in the list
+           6. Extend the working list with a list you provide
+           7. Remove all elements in the list less than an integer you provide
+           ''')
+
+x= eval(input("How many integers in this list? "))
+
+the_list = [] # create empty list
+
+cre_a_lis(x)
+
+y = eval(input('Your Selection:  '))
+
+while y > 0:
+
+    if y==1:
+        x= eval(input("How many integers in the new list? "))
+        cre_a_lis(x)
+
+    elif y==2:
+        print ('The list is ',the_list)
+
+    elif y==3:
+        x = eval (input ("Provide a value: "))
+        y= min(the_list, key=lambda z:abs(z-x))
+        print ('The exact or nearest value is ',y)
+
+    elif y==4:
+        the_list.sort()
+        print(the_list)
+
+    elif y==5:
+        x= eval(input("Provide an integer to be added to each elelment "))
+        the_list=[z+x for z in the_list]
+        print ('The new list is ',the_list)
+
+    elif y==6:
+        x= eval(input("How many integers in the extention list? "))
+        ext_list = [] # create empty list
+        for i in range(0, x):
+            number = int(input('New element: '))
+            ext_list.append(number)
+            the_list.extend(ext_list)
+            print ('The new list is ',the_list)
+
+    elif y==7:
+        m = eval (input ('Provide an integer :   '))
+        the_list= list(filter(lambda z: z >= m, the_list))
+
+    if y!=1:
+        options()
+
+    y = eval(input('Your Selection:  '))
+
+exit()
